@@ -1,3 +1,14 @@
 @use "./scss/base" as *;
 
+.App {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr minmax(100px, 300px);
+    grid-template-rows: auto 1fr;
+
+    main {
+        padding: 2rem;
+    }
+}
 

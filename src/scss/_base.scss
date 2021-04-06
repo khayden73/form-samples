@@ -18,12 +18,11 @@ body {
 }
 
 a {
-    color: mediumblue;
+    color: currentColor;
     text-decoration: none;
 
     &:hover,
     &:active {
-        color: mediumpurple;
         text-decoration: underline;
     }
 }
