@@ -12,6 +12,7 @@
 label {
     text-transform: uppercase;
     font-weight: 600;
+    margin-bottom: 1ch;
 }
 
 fieldset {
@@ -22,9 +23,24 @@ fieldset {
 
 input {
     padding: 1rem;
+    font-size: 2rem;
     border: none;
     border-bottom: 1px solid currentColor;
     background-color: rgba(white, 0.1);
+
+    &:focus {
+        background-color: rgba(white, 0.3);
+    }
+
+    &[data-validated=true] {
+        border: 1px solid currentColor;
+        background-color: rgba(white, 0.3);
+    }
+
+    &[data-error=true] {
+        border: 1px solid red;
+        background-color: rgba(white, 0.5);
+    }
 }
 
 .actions {

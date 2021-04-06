@@ -1,15 +1,18 @@
 import styles from "./LoginForm.module.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { isValidEmail } from "../lib/validate";
+import { isValidEmail, isValidPassword } from "../lib/validate";
 
 export function LoginForm() {
     const [enabled, setEnabled] = useState(false);
-
-    const valid = {
+    const [valid, setValid] = useState({
         email: false,
         password: false,
-    };
+    });
+    const [form, setForm] = useState({
+        email: "",
+        password: "",
+    });
 
     return (
         <div className={styles["login-form"]}>
@@ -24,14 +27,27 @@ export function LoginForm() {
                             type="email"
                             name="email"
                             placeholder="Enter Email Address"
+                            data-validated={valid.email}
+                            data-error={form.email.length > 0 && !valid.email}
+                            data-lpignore="true"
                             onChange={(changed) => {
-                                valid.email = isValidEmail(changed.target.value);
+                                setValid({ email: isValidEmail(changed.target.value) });
                             }}
                         />
                     </fieldset>
                     <fieldset>
                         <label>Password</label>
-                        <input type="password" name="password" placeholder="Enter Password" />
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Enter Password"
+                            data-validated={valid.password}
+                            data-error={form.password.length > 0 && !valid.password}
+                            data-lpignore="true"
+                            onChange={(changed) => {
+                                setValid({ password: isValidPassword(changed.target.value) });
+                            }}
+                        />
                     </fieldset>
                 </section>
                 <section className={styles.actions}>
