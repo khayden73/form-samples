@@ -2,17 +2,23 @@ import styles from "./LoginForm.module.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { isValidEmail, isValidPassword } from "../lib/validate";
+// import { Input } from "./form/Input";
 
 export function LoginForm() {
-    const [enabled, setEnabled] = useState(false);
-    const [valid, setValid] = useState({
-        email: false,
-        password: false,
-    });
-    const [form, setForm] = useState({
+    const [inputs, setInputs] = useState({
         email: "",
         password: "",
     });
+
+    const handleChange = (event) => {
+        setInputs((inputs) => ({ ...inputs, [event.target.name]: event.target.value }));
+    };
+    // const [enabled, setEnabled] = useState(false);
+    // const [valid, setValid] = useState();
+    /*const [form, setForm] = useState({
+        email: "",
+        password: "",
+    });*/
 
     return (
         <div className={styles["login-form"]}>
@@ -23,21 +29,34 @@ export function LoginForm() {
                 <section>
                     <fieldset>
                         <label>Email</label>
-                        <input
+                        {/*<Input
                             type="email"
                             name="email"
                             placeholder="Enter Email Address"
-                            data-validated={valid.email}
-                            data-error={form.email.length > 0 && !valid.email}
-                            data-lpignore="true"
-                            onChange={(changed) => {
-                                setValid({ email: isValidEmail(changed.target.value) });
+                            validator={(value) => {
+                                valid.email = isValidEmail(value);
                             }}
+                        />*/}
+                        <input
+                            type="email"
+                            name="email"
+                            value={inputs.email}
+                            placeholder="Enter Email Address"
+                            data-lpignore="true"
+                            onChange={handleChange}
                         />
                     </fieldset>
                     <fieldset>
                         <label>Password</label>
-                        <input
+                        {/*<Input
+                            type="password"
+                            name="password"
+                            placeholder="Enter Password"
+                            validator={(value) => {
+                                valid.password = isValidPassword(value);
+                            }}
+                        />*/}
+                        {/*<input
                             type="password"
                             name="password"
                             placeholder="Enter Password"
@@ -47,11 +66,11 @@ export function LoginForm() {
                             onChange={(changed) => {
                                 setValid({ password: isValidPassword(changed.target.value) });
                             }}
-                        />
+                        />*/}
                     </fieldset>
                 </section>
                 <section className={styles.actions}>
-                    <button disabled={!enabled}>login</button>
+                    <button>login</button>
                     <Link>Sign Up</Link>
                     <Link>Forgot Password</Link>
                 </section>
