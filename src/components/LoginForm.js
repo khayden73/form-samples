@@ -1,8 +1,7 @@
 import styles from "./LoginForm.module.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { isValidEmail, isValidPassword } from "../lib/validate";
-// import { Input } from "./form/Input";
+// import { isValidEmail, isValidPassword } from "../lib/validate";
 
 export function LoginForm() {
     const [inputs, setInputs] = useState({
@@ -10,15 +9,19 @@ export function LoginForm() {
         password: "",
     });
 
+    // const [validated, setValidated] = useState(false);
+
     const handleChange = (event) => {
-        setInputs((inputs) => ({ ...inputs, [event.target.name]: event.target.value }));
+        setInputs(() => ({ ...inputs, [event.target.name]: event.target.value }));
+        console.log("inputs: ", JSON.stringify(inputs));
+        checkForm();
     };
-    // const [enabled, setEnabled] = useState(false);
-    // const [valid, setValid] = useState();
-    /*const [form, setForm] = useState({
-        email: "",
-        password: "",
-    });*/
+
+    const checkForm = () => {
+        Object.keys(inputs).forEach((key) => {
+            console.log(`${key} = ${inputs[key]}`);
+        });
+    };
 
     return (
         <div className={styles["login-form"]}>
@@ -71,8 +74,8 @@ export function LoginForm() {
                 </section>
                 <section className={styles.actions}>
                     <button>login</button>
-                    <Link>Sign Up</Link>
-                    <Link>Forgot Password</Link>
+                    <Link to="/">Sign Up</Link>
+                    <Link to="/">Forgot Password</Link>
                 </section>
             </form>
         </div>

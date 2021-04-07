@@ -1,12 +1,12 @@
-import { useState } from "react";
+// import { useState } from "react";
 import PropTypes from "prop-types";
 
 export function Input(props) {
-    const [valid, setValid] = useState(false);
+    // const [valid, setValid] = useState(false);
     const changed = (target) => {
-        if (typeof props.validator === "function") {
+        /*if (typeof props.validator === "function") {
             setValid(props.validator(target.value));
-        }
+        }*/
     };
 
     return (
