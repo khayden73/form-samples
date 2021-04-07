@@ -32,14 +32,16 @@ input {
         background-color: rgba(white, 0.3);
     }
 
-    &[data-validated=true] {
+    /*&[data-validated=true] {
         border: 1px solid currentColor;
         background-color: rgba(white, 0.3);
-    }
+    }*/
 
-    &[data-error=true] {
-        border: 1px solid red;
+    &[data-error="true"],
+    &[data-error="true"]:focus {
+        //border: 1px solid red;
         background-color: rgba(white, 0.5);
+        outline: 1px solid red;
     }
 }
 

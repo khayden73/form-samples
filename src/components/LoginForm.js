@@ -1,28 +1,27 @@
 import styles from "./LoginForm.module.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useLoginForm } from "../lib/customHooks";
+import { isValidEmail, isValidPassword } from "../lib/validate";
+
 // import { isValidEmail, isValidPassword } from "../lib/validate";
 
+const formConfig = {
+    email: {
+        error: false,
+        value: "",
+        validator: isValidEmail,
+    },
+    password: {
+        error: false,
+        value: "",
+        validator: isValidPassword,
+    },
+};
+
 export function LoginForm() {
-    const [inputs, setInputs] = useState({
-        email: "",
-        password: "",
-    });
-
-    // const [validated, setValidated] = useState(false);
-
-    const handleChange = (event) => {
-        setInputs(() => ({ ...inputs, [event.target.name]: event.target.value }));
-        console.log("inputs: ", JSON.stringify(inputs));
-        checkForm();
-    };
-
-    const checkForm = () => {
-        Object.keys(inputs).forEach((key) => {
-            console.log(`${key} = ${inputs[key]}`);
-        });
-    };
-
+    const { handleInputChange, config } = useLoginForm(formConfig);
+    console.log("config: ", config);
     return (
         <div className={styles["login-form"]}>
             <header>
@@ -32,44 +31,27 @@ export function LoginForm() {
                 <section>
                     <fieldset>
                         <label>Email</label>
-                        {/*<Input
-                            type="email"
-                            name="email"
-                            placeholder="Enter Email Address"
-                            validator={(value) => {
-                                valid.email = isValidEmail(value);
-                            }}
-                        />*/}
                         <input
                             type="email"
                             name="email"
-                            value={inputs.email}
+                            value={config.email.value}
+                            data-error={config.email.error}
                             placeholder="Enter Email Address"
                             data-lpignore="true"
-                            onChange={handleChange}
+                            onChange={handleInputChange}
                         />
                     </fieldset>
                     <fieldset>
                         <label>Password</label>
-                        {/*<Input
+                        <input
                             type="password"
                             name="password"
+                            value={config.password.value}
+                            data-error={config.password.error}
                             placeholder="Enter Password"
-                            validator={(value) => {
-                                valid.password = isValidPassword(value);
-                            }}
-                        />*/}
-                        {/*<input
-                            type="password"
-                            name="password"
-                            placeholder="Enter Password"
-                            data-validated={valid.password}
-                            data-error={form.password.length > 0 && !valid.password}
                             data-lpignore="true"
-                            onChange={(changed) => {
-                                setValid({ password: isValidPassword(changed.target.value) });
-                            }}
-                        />*/}
+                            onChange={handleInputChange}
+                        />
                     </fieldset>
                 </section>
                 <section className={styles.actions}>
