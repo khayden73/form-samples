@@ -1,11 +1,12 @@
 export function isValidEmail(email) {
-    console.log(`[isValidEmail] ${email} : ${email.length > 0} && ${email.includes("@")}`);
-    // return email.includes("@");
-    return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email);
+    // console.log(`[isValidEmail] ${email} : ${email.length > 0} && ${email.includes("@")}`);
+    return email.includes("@");
+    // return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email);
 }
 
 export function isValidPassword(pw) {
-    return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(pw);
+    return pw.length > 3;
+    // return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(pw);
 }
 
 /*

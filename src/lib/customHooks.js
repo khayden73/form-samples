@@ -18,8 +18,14 @@ export function useLoginForm(initialConfig) {
         }));
     };
 
+    const allowSubmit = () => {
+        // if an error or value is empty, return false
+        return !Object.keys(config).filter((key) => config[key].error || config[key].value.length === 0).length;
+    };
+
     return {
         handleInputChange,
+        allowSubmit: allowSubmit(),
         config,
     };
 }

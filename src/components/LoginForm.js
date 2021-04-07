@@ -1,10 +1,7 @@
 import styles from "./LoginForm.module.scss";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { useLoginForm } from "../lib/customHooks";
 import { isValidEmail, isValidPassword } from "../lib/validate";
-
-// import { isValidEmail, isValidPassword } from "../lib/validate";
 
 const formConfig = {
     email: {
@@ -20,8 +17,8 @@ const formConfig = {
 };
 
 export function LoginForm() {
-    const { handleInputChange, config } = useLoginForm(formConfig);
-    console.log("config: ", config);
+    const { handleInputChange, allowSubmit, config } = useLoginForm(formConfig);
+    console.log("allowSubmit: ", allowSubmit);
     return (
         <div className={styles["login-form"]}>
             <header>
@@ -55,7 +52,7 @@ export function LoginForm() {
                     </fieldset>
                 </section>
                 <section className={styles.actions}>
-                    <button>login</button>
+                    <button disabled={!allowSubmit}>login</button>
                     <Link to="/">Sign Up</Link>
                     <Link to="/">Forgot Password</Link>
                 </section>
