@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.scss";
 import { PageHeader } from "./components/PageHeader";
 import { SiteNav } from "./components/SiteNav";

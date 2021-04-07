@@ -1,19 +1,24 @@
 import styles from "./LoginForm.module.scss";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useLoginForm } from "../lib/customHooks";
 import { isValidEmail, isValidPassword } from "../lib/validate";
 
-export function LoginForm() {
-    const [enabled, setEnabled] = useState(false);
-    const [valid, setValid] = useState({
-        email: false,
-        password: false,
-    });
-    const [form, setForm] = useState({
-        email: "",
-        password: "",
-    });
+const formConfig = {
+    email: {
+        error: false,
+        value: "",
+        validator: isValidEmail,
+    },
+    password: {
+        error: false,
+        value: "",
+        validator: isValidPassword,
+    },
+};
 
+export function LoginForm() {
+    const { handleInputChange, allowSubmit, config } = useLoginForm(formConfig);
+    console.log("allowSubmit: ", allowSubmit);
     return (
         <div className={styles["login-form"]}>
             <header>
@@ -26,13 +31,11 @@ export function LoginForm() {
                         <input
                             type="email"
                             name="email"
+                            value={config.email.value}
+                            data-error={config.email.error}
                             placeholder="Enter Email Address"
-                            data-validated={valid.email}
-                            data-error={form.email.length > 0 && !valid.email}
                             data-lpignore="true"
-                            onChange={(changed) => {
-                                setValid({ email: isValidEmail(changed.target.value) });
-                            }}
+                            onChange={handleInputChange}
                         />
                     </fieldset>
                     <fieldset>
@@ -40,20 +43,18 @@ export function LoginForm() {
                         <input
                             type="password"
                             name="password"
+                            value={config.password.value}
+                            data-error={config.password.error}
                             placeholder="Enter Password"
-                            data-validated={valid.password}
-                            data-error={form.password.length > 0 && !valid.password}
                             data-lpignore="true"
-                            onChange={(changed) => {
-                                setValid({ password: isValidPassword(changed.target.value) });
-                            }}
+                            onChange={handleInputChange}
                         />
                     </fieldset>
                 </section>
                 <section className={styles.actions}>
-                    <button disabled={!enabled}>login</button>
-                    <Link>Sign Up</Link>
-                    <Link>Forgot Password</Link>
+                    <button disabled={!allowSubmit}>login</button>
+                    <Link to="/">Sign Up</Link>
+                    <Link to="/">Forgot Password</Link>
                 </section>
             </form>
         </div>
