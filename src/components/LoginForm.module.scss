@@ -1,6 +1,10 @@
 .login-form {
     display: flex;
     flex-direction: column;
+
+    form {
+        @extend .login-form;
+    }
 }
 
 .form-fields {
@@ -48,8 +52,12 @@ input {
 .actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 1rem;
+    grid-gap: 3rem 1rem;
     justify-items: center;
+    width: 100%;
+    max-width: 40rem;
+    align-self: center;
+    margin-top: 4rem;
 
     button {
         grid-column: 1 / -1;
@@ -61,10 +69,12 @@ input {
         color: white;
         border: none;
         border-radius: 1rem;
+        cursor: pointer;
 
         &:disabled {
             opacity: 0.6;
             cursor: not-allowed;
         }
     }
+
 }
