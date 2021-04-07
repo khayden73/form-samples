@@ -1,13 +1,30 @@
 @use "./scss/base" as *;
+@use "./scss/placeholders" as *;
 
 .App {
+    --columns: 1fr;
+    --rows: auto auto 1fr;
+    --nav-row: 2;
     width: 100%;
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 1fr minmax(100px, 300px);
-    grid-template-rows: auto 1fr;
+    grid-template-columns: var(--columns);
+    grid-template-rows: var(--rows);
+
+    @media screen and (min-width: 800px) {
+        --columns: 1fr minmax(100px, 300px);
+        --rows: auto 1fr;
+        --nav-row: unset;
+    }
+
+    nav {
+        @extend %flex-column;
+        grid-row: var(--nav-row);
+    }
 
     main {
+        @extend %flex-column;
+        align-items: center;
         padding: 2rem;
     }
 }

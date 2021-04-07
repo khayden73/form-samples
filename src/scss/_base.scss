@@ -1,3 +1,5 @@
+@use "custom-props" as *;
+
 html {
     font-size: 10px;
 }
@@ -8,9 +10,8 @@ body {
     position: relative;
     margin: 0;
     padding: 0;
-    //line-height: 1.6;
-    background-color: lightblue;
-    color: darkslateblue;
+    background-color: var(--primary-color-2);
+    color: var(--primary-color-1);
 }
 
 * {

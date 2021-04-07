@@ -15,7 +15,8 @@ function App() {
                             <LoginForm />
                         </Route>
                         <Route path="/checks">
-                            <p>Check Please</p>
+                            <h2>Check Please</h2>
+                            <p>example not created yet</p>
                         </Route>
                     </Switch>
                 </main>

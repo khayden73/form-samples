@@ -1,9 +1,24 @@
+@use "../scss/placeholders" as *;
+
 .login-form {
-    display: flex;
-    flex-direction: column;
+    @extend %flex-column;
+    border: 1px solid var(--primary-color-1);
+    border-radius: 1rem;
+    box-shadow: 2px 2px 4px rgba(midnightblue, 0.4);
+    margin-top: 4rem;
+    max-width: 50rem;
+    overflow: hidden;
+    width: 100%;
+
+    header {
+        background-color: rgba(midnightblue, 0.8);
+        padding: 1rem 2rem;
+        color: white;
+    }
 
     form {
-        @extend .login-form;
+        @extend %flex-column;
+        padding: 3rem 2rem;
     }
 }
 
@@ -30,10 +45,10 @@ input {
     font-size: 2rem;
     border: none;
     border-bottom: 1px solid currentColor;
-    background-color: rgba(white, 0.1);
+    background-color: rgba(white, 0.4);
 
     &:focus {
-        background-color: rgba(white, 0.3);
+        background-color: rgba(white, 0.6);
     }
 
     /*&[data-validated=true] {
@@ -55,7 +70,6 @@ input {
     grid-gap: 3rem 1rem;
     justify-items: center;
     width: 100%;
-    max-width: 40rem;
     align-self: center;
     margin-top: 4rem;
 
@@ -65,8 +79,8 @@ input {
         padding: 1rem;
         font-size: 2rem;
         text-transform: uppercase;
-        background-color: darkslateblue;
-        color: white;
+        background-color: var(--primary-color-1);
+        color: var(--secondary-color-2);
         border: none;
         border-radius: 1rem;
         cursor: pointer;
@@ -74,6 +88,11 @@ input {
         &:disabled {
             opacity: 0.6;
             cursor: not-allowed;
+        }
+
+        &:hover,
+        &:active {
+            background-color: var(--secondary-color-1);
         }
     }
 
