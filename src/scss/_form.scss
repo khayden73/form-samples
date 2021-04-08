@@ -1,0 +1,56 @@
+@use "./placeholders" as *;
+
+.form-container {
+    @extend %flex-column;
+    // allow forms to override max-width
+    --max-width: 50rem;
+    border: 1px solid var(--primary-color-1);
+    border-radius: 1rem;
+    box-shadow: 2px 2px 4px rgba(midnightblue, 0.4);
+    margin-top: 4rem;
+    max-width: var(--max-width);
+    overflow: hidden;
+    width: 100%;
+
+    header {
+        background-color: rgba(midnightblue, 0.8);
+        padding: 1rem 2rem;
+        color: white;
+    }
+
+    form {
+        @extend %flex-column;
+        padding: 3rem 2rem;
+    }
+}
+
+.form-fields {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 1rem;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        input {
+            & + span {
+                margin-left: 1ch;
+            }
+        }
+    }
+}
+
+.styled-checkbox {
+    &::before {
+        content: "";
+        display: inline-block;
+        width: 2ch;
+        height: 2ch;
+        border: 1px solid blue;
+        background-color: blue;
+        border-radius: 0.3rem;
+    }
+}

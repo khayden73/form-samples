@@ -1,99 +1,74 @@
-@use "../scss/placeholders" as *;
+@use "../scss/form" as *;
 
 .login-form {
-    @extend %flex-column;
-    border: 1px solid var(--primary-color-1);
-    border-radius: 1rem;
-    box-shadow: 2px 2px 4px rgba(midnightblue, 0.4);
-    margin-top: 4rem;
-    max-width: 50rem;
-    overflow: hidden;
-    width: 100%;
 
-    header {
-        background-color: rgba(midnightblue, 0.8);
-        padding: 1rem 2rem;
-        color: white;
+    label {
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 1ch;
     }
 
-    form {
-        @extend %flex-column;
-        padding: 3rem 2rem;
-    }
-}
-
-.form-fields {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: 1rem;
-}
-
-label {
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 1ch;
-}
-
-fieldset {
-    border: none;
-    display: flex;
-    flex-direction: column;
-}
-
-input {
-    padding: 1rem;
-    font-size: 2rem;
-    border: none;
-    border-bottom: 1px solid currentColor;
-    background-color: rgba(white, 0.4);
-
-    &:focus {
-        background-color: rgba(white, 0.6);
+    fieldset {
+        border: none;
+        display: flex;
+        flex-direction: column;
     }
 
-    /*&[data-validated=true] {
-        border: 1px solid currentColor;
-        background-color: rgba(white, 0.3);
-    }*/
-
-    &[data-error="true"],
-    &[data-error="true"]:focus {
-        //border: 1px solid red;
-        background-color: rgba(white, 0.5);
-        outline: 1px solid red;
-    }
-}
-
-.actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 3rem 1rem;
-    justify-items: center;
-    width: 100%;
-    align-self: center;
-    margin-top: 4rem;
-
-    button {
-        grid-column: 1 / -1;
-        width: 100%;
+    input {
         padding: 1rem;
         font-size: 2rem;
-        text-transform: uppercase;
-        background-color: var(--primary-color-1);
-        color: var(--secondary-color-2);
         border: none;
-        border-radius: 1rem;
-        cursor: pointer;
+        border-bottom: 1px solid currentColor;
+        background-color: rgba(white, 0.4);
 
-        &:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
+        &:focus {
+            background-color: rgba(white, 0.6);
         }
 
-        &:hover,
-        &:active {
-            background-color: var(--secondary-color-1);
+        /*&[data-validated=true] {
+            border: 1px solid currentColor;
+            background-color: rgba(white, 0.3);
+        }*/
+
+        &[data-error="true"],
+        &[data-error="true"]:focus {
+            //border: 1px solid red;
+            background-color: rgba(white, 0.5);
+            outline: 1px solid red;
         }
     }
 
+    .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 3rem 1rem;
+        justify-items: center;
+        width: 100%;
+        align-self: center;
+        margin-top: 4rem;
+
+        button {
+            grid-column: 1 / -1;
+            width: 100%;
+            padding: 1rem;
+            font-size: 2rem;
+            text-transform: uppercase;
+            background-color: var(--primary-color-1);
+            color: var(--secondary-color-2);
+            border: none;
+            border-radius: 1rem;
+            cursor: pointer;
+
+            &:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+
+            &:hover,
+            &:active {
+                background-color: var(--secondary-color-1);
+            }
+        }
+
+    }
 }

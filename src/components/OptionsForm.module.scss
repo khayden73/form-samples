@@ -1,0 +1,7 @@
+@use "../scss/form" as *;
+
+.options-form {
+    fieldset {
+        border-color: var(--primary-color-1);
+    }
+}

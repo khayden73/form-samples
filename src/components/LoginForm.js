@@ -1,3 +1,4 @@
+import cn from "classnames";
 import styles from "./LoginForm.module.scss";
 import { Link } from "react-router-dom";
 import { useLoginForm } from "../lib/customHooks";
@@ -19,13 +20,14 @@ const formConfig = {
 export function LoginForm() {
     const { handleInputChange, allowSubmit, config } = useLoginForm(formConfig);
     console.log("allowSubmit: ", allowSubmit);
+    const formCss = cn(styles["form-container"], styles["login-form"]);
     return (
-        <div className={styles["login-form"]}>
+        <div className={formCss}>
             <header>
                 <h2>Login to access stuff</h2>
             </header>
             <form>
-                <section>
+                <section className={styles["form-fields"]}>
                     <fieldset>
                         <label>Email</label>
                         <input
