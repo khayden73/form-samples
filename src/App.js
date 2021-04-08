@@ -3,6 +3,7 @@ import "./App.scss";
 import { PageHeader } from "./components/PageHeader";
 import { SiteNav } from "./components/SiteNav";
 import { LoginForm } from "./components/LoginForm";
+import { OptionsForm } from "./components/OptionsForm";
 
 function App() {
     return (
@@ -15,8 +16,7 @@ function App() {
                             <LoginForm />
                         </Route>
                         <Route path="/checks">
-                            <h2>Check Please</h2>
-                            <p>example not created yet</p>
+                            <OptionsForm />
                         </Route>
                     </Switch>
                 </main>
