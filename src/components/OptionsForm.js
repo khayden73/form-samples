@@ -40,6 +40,7 @@ export function OptionsForm() {
                                 aria-hidden={false}
                                 onChange={handleCheckboxChange}
                             />
+                            <i />
                             <span>Chewbacca</span>
                         </label>
                         <label className={styles["styled-checkbox"]}>

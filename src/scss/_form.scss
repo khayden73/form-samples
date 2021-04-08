@@ -46,18 +46,23 @@
 .styled-checkbox {
     --content: "";
     --cb-bg: blue;
-    &::before {
-        content: var(--content);
+
+    input:checked {
+        --content: "\2713";
+        --cb-bg: red;
+    }
+
+    i {
         display: inline-block;
         width: 2ch;
         height: 2ch;
-        border: 1px solid blue;
         background-color: var(--cb-bg);
         border-radius: 0.3rem;
+
+        &::before {
+            content: var(--content);
+            display: inline-block;
+        }
     }
 
-    input:checked {
-        --content: "+";
-        --cb-bg: red;
-    }
 }
