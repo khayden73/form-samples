@@ -29,3 +29,23 @@ export function useLoginForm(initialConfig) {
         config,
     };
 }
+
+export function useCheckBoxes(initialConfig) {
+    const [config, setConfig] = useState(initialConfig);
+
+    const handleCheckboxChange = (event) => {
+        const { name, value: inputValue, checked } = event.target;
+        console.log("[handleCheckboxChange] %s [%s]: %o", name, inputValue, checked);
+        setConfig(() => ({
+            ...config,
+            [inputValue]: {
+                checked,
+            },
+        }));
+    };
+
+    return {
+        handleCheckboxChange,
+        config,
+    };
+}
