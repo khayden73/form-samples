@@ -1,0 +1,12 @@
+<script>
+    function firstNotRepeatingCharacter(s) {
+        const chars = s.split("");
+        for (let i = 0; i < chars.length; i++) {
+            if(s.indexOf(chars[i]) === i && s.indexOf(chars[i], i+1) === -1) return chars[i];
+        }
+        return "_";
+    }
+
+    console.log("RESULT: ", firstNotRepeatingCharacter("abacabad"));
+    console.log("RESULT: ", firstNotRepeatingCharacter("abacabaabacaba"));
+</script>

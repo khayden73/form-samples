@@ -1,0 +1,33 @@
+<script>
+    function rotateImage(a) {
+        console.log("a: ", a);
+        const end = a.length - 1;
+        const solution = [];
+        for (let i = 0; i < a.length; i++) {
+            let temp = a[i].map((coords, j) => {
+                console.log("coords: ", coords);
+                // console.log("j: ", j);
+                console.log("end - j: ", end - j);
+                // console.log("i: ", i);
+                console.log(`a[${end} - ${j}][${i}]: `, a[end - j][i]);
+                return a[end - j][i];
+            });
+            solution.push(temp);
+        }
+        return solution;
+    }
+
+    const test1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+    const test2 = [[1, 2, 1, 2, 3], [4, 5, 4, 5, 6], [4, 5, 4, 5, 6], [7, 8, 7, 8, 9], [7, 8, 7, 8, 9]];
+    console.log("RESULT: ", rotateImage(test1));
+    console.log("RESULT: ", rotateImage(test2));
+    /*
+    Note: Try to solve this task in-place (with O(1) additional memory), since this is what you'll be asked to do during an interview.
+    You are given an n x n 2D matrix that represents an image. Rotate the image by 90 degrees (clockwise).
+
+    result:
+    [[7, 4, 1],
+     [8, 5, 2],
+     [9, 6, 3]]
+    * */
+</script>
